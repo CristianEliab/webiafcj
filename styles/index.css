@@ -3,3 +3,31 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer utilities {
+  .clip-path-rhombus {
+    clip-path: polygon(50% 0%, 80% 50%, 50% 100%, 20% 50%);
+    display: inline-block;
+    border-radius: 100px;
+  }
+
+  .clip-path-hex {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 0 30%);
+  }
+
+  .clip-path-paralle {
+    clip-path: polygon(15% 0, 0 15%, 0% 100%, 87% 100%, 100% 87%, 100% 0%);
+  }
+
+  @variants responsive {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}

@@ -2,6 +2,7 @@ const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
+  mode: "jit",
   purge: {
     enabled: true,
     content: ["./**/*.html", "./*.html", "./**/*.js", "./*.js"],
@@ -14,6 +15,13 @@ module.exports = {
       ...colors,
     },
     extend: {
+      backgroundImage: {
+        colombia: "url('/img/colombia1.jpg')",
+        ecuador: "url('/img/ecuador.png')",
+        peru: "url('/img/peru.jpg')",
+        venezuela: "url('/img/venezuela.jpg')",
+        bolivia: "url('/img/bolivia.jpg')",
+      },
       minHeight: {
         "screen-75": "75vh",
       },
@@ -29,9 +37,12 @@ module.exports = {
       },
       inset: {
         "-100": "-100%",
+        "-425-px": "-425px",
+        "-360-px": "-360px",
         "-225-px": "-225px",
         "-160-px": "-160px",
         "-150-px": "-150px",
+        "-100-px": "-100px",
         "-94-px": "-94px",
         "-50-px": "-50px",
         "-29-px": "-29px",
@@ -69,6 +80,8 @@ module.exports = {
       },
       backgroundSize: {
         full: "100%",
+        flag: "75%",
+        half: "50%",
       },
     },
   },

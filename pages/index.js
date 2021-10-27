@@ -1,59 +1,114 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from "react";
-/* import Link from "next/link"; */
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 export default function Index() {
+  const [current, setCurrent] = useState(0);
+  const [current2, setCurrent2] = useState(1);
+  const [current3, setCurrent3] = useState(2);
+  const [counter, setCounter] = useState(0);
+  const images = [
+    "/celulas/1.png",
+    "/celulas/2.png",
+    "/celulas/3.png",
+    "/celulas/4.png",
+    "/celulas/5.png",
+    "/celulas/6.png",
+    "/celulas/7.png",
+    "/celulas/8.png",
+    "/celulas/9.png",
+    "/celulas/10.png",
+    "/celulas/11.png",
+    "/celulas/12.png",
+    "/celulas/13.png",
+    "/celulas/14.png",
+    "/celulas/15.png",
+    "/celulas/16.png",
+    "/celulas/17.png",
+  ];
+
+  const changeCurrent = (type) => {
+    if (type === "add") {
+      if (current === images.length - 1) {
+        setCurrent(0);
+      } else {
+        setCurrent(current + 1);
+      }
+      if (current2 === images.length - 1) {
+        setCurrent2(1);
+      } else {
+        setCurrent2(current2 + 1);
+      }
+      if (current3 === images.length - 1) {
+        setCurrent3(2);
+      } else {
+        setCurrent3(current3 + 1);
+      }
+    } else {
+      if (current === 0) {
+        setCurrent(images.length - 1);
+      } else {
+        setCurrent(current - 1);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (counter === images.length) {
+      changeCurrent("add");
+      setCounter(0);
+    } else if (counter !== -1) {
+      var timer = setTimeout(() => setCounter(counter + 1), 500);
+    }
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [counter]);
+
   return (
     <>
       <IndexNavbar fixed />
       <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
-            <div className="pt-32 sm:pt-0">
-              <h2 className="font-semibold text-4xl text-blueGray-600">
+            <div className="flex flex-col pt-32 sm:pt-0 justify-items-center items-center">
+              <img
+                alt="..."
+                src="/img/logo-iafcj-01.png"
+                className="w-full align-middle rounded-lg max-w-sm left-260-px -top-160-px"
+              />
+              <h2 className="text-center mt-4 font-bold text-4xl text-blueGray-600">
                 IGLESIA APOSTOLICA DE LA FE EN CRISTO JESUS
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
+              <p className="text-center mt-4 text-lg leading-relaxed text-blueGray-500">
                 Notus NextJS is Free and Open Source. It does not change any of
-                the CSS from{" "}
-                <a
-                  href="https://tailwindcss.com/?ref=creativetim"
-                  className="text-blueGray-600"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Tailwind CSS
-                </a>
-                . It features multiple HTML elements and it comes with dynamic
-                components for ReactJS, Vue and Angular.
+                the CSS from . It features multiple HTML elements and it comes
+                with dynamic components for ReactJS, Vue and Angular.
               </p>
-              {/* <div className="mt-12">
-                <a
-                  href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus?ref=nnjs-index"
-                  target="_blank"
-                  className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-                >
-                  Get started
-                </a>
-                <a
-                  href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
-                  className="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
-                  target="_blank"
-                >
-                  Github Star
-                </a>
-              </div> */}
+            </div>
+          </div>
+          <div className="w-full md:w-5/12 px-4 mr-auto ml-auto mt-32">
+            <div className="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0">
+              <img
+                alt="..."
+                src="/img/ministers2.jpg"
+                className="w-full align-middle rounded-lg absolute shadow-lg max-w-580-px left-260-px -top-160-px z-3"
+              />
+              <img
+                alt="..."
+                src="/img/ministers.jpg"
+                className="w-full align-middle rounded-lg absolute shadow-lg max-w-580-px left-95-px -top-360-px z-2"
+              />
+              <img
+                alt="..."
+                src="/img/ministers4.jpg"
+                className="w-full align-middle rounded-lg absolute shadow-2xl max-w-580-px -left-50-px top-95-px"
+              />
             </div>
           </div>
         </div>
-        <img
-          className="absolute top-0 b-auto right-0 pt-16 sm:w-4/12 -mt-48 sm:mt-0 w-6/12 max-h-860-px"
-          src="/img/pattern_nextjs.png"
-          alt="..."
-        />
       </section>
 
       <section className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
@@ -97,14 +152,11 @@ export default function Index() {
                       className="text-blueGray-700 fill-current"
                     ></polygon>
                   </svg>
-                  <h4 className="text-xl font-bold text-white">
-                    Great for your awesome project
-                  </h4>
+                  <h4 className="text-xl font-bold text-white">Mateo 28:19</h4>
                   <p className="text-md font-light mt-2 text-white">
-                    Putting together a page has never been easier than matching
-                    together pre-made components. From landing pages
-                    presentation to login areas, you can easily customise and
-                    built your pages.
+                    Por tanto, id, y haced discípulos a todas las naciones,
+                    bautizándolos en el nombre del Padre, y del Hijo, y del
+                    Espíritu Santo
                   </p>
                 </blockquote>
               </div>
@@ -116,7 +168,7 @@ export default function Index() {
                   <div className="relative flex flex-col mt-4">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-sitemap"></i>
+                        <i className="far fa-calendar-alt"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
                         CSS Components
@@ -179,10 +231,10 @@ export default function Index() {
           <div className="flex flex-wrap items-center">
             <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
               <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                <i className="fas fa-sitemap text-xl"></i>
+                <i className="far fa-calendar-alt"></i>
               </div>
               <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                CSS Components
+                Eventos año 2021
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                 Every element that you need in a product comes built in as a
@@ -215,122 +267,102 @@ export default function Index() {
                   Typography
                 </span>
               </div>
-              {/* <a
-                  href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/alerts/notus?ref=nnjs-index"
-                  target="_blank"
-                  className="font-bold text-blueGray-700 hover:text-blueGray-500 ease-linear transition-all duration-150"
-                >
-                  View All{" "}
-                  <i className="fa fa-angle-double-right ml-1 leading-relaxed"></i>
-                </a> */}
             </div>
 
             <div className="w-full md:w-5/12 px-4 mr-auto ml-auto mt-32">
               <div className="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0">
                 <img
                   alt="..."
-                  src="/img/component-btn.png"
+                  src="https://images.unsplash.com/photo-1475938476802-32a7e851dad1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2069&q=80"
                   className="w-full align-middle rounded absolute shadow-lg max-w-100-px left-145-px -top-29-px z-3"
                 />
                 <img
                   alt="..."
-                  src="/img/component-profile-card.png"
+                  src="https://images.unsplash.com/photo-1520642413789-2bd6770d59e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80"
                   className="w-full align-middle rounded-lg absolute shadow-lg max-w-210-px left-260-px -top-160-px"
                 />
                 <img
                   alt="..."
-                  src="/img/component-info-card.png"
+                  src="https://images.unsplash.com/photo-1617642171292-afad99eee7ed?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2128&q=90&w=100"
                   className="w-full align-middle rounded-lg absolute shadow-lg max-w-180-px left-40-px -top-225-px z-2"
                 />
                 <img
                   alt="..."
-                  src="/img/component-info-2.png"
+                  src="https://images.unsplash.com/photo-1561448817-bb90ab1327b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
                   className="w-full align-middle rounded-lg absolute shadow-2xl max-w-200-px -left-50-px top-25-px"
-                />
-                <img
-                  alt="..."
-                  src="/img/component-menu.png"
-                  className="w-full align-middle rounded absolute shadow-lg max-w-580-px -left-20-px top-210-px"
-                />
-                <img
-                  alt="..."
-                  src="/img/component-btn-pink.png"
-                  className="w-full align-middle rounded absolute shadow-xl max-w-120-px left-195-px top-95-px"
                 />
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center pt-32">
+          <div id="country" className="flex flex-wrap items-center pt-32">
             <div className="w-full md:w-6/12 px-4 mr-auto ml-auto mt-32">
               <div className="justify-center flex flex-wrap relative">
                 <div className="my-4 w-full lg:w-6/12 px-4">
-                  <div className="bg-red-600 shadow-lg rounded-lg text-center p-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/svelte.jpg"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      Svelte
-                    </p>
-                  </div>
-
-                  <div className="bg-lightBlue-500 shadow-lg rounded-lg text-center p-8 mt-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/react.jpg"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      ReactJS
-                    </p>
-                  </div>
-
-                  <div className="bg-blueGray-700 shadow-lg rounded-lg text-center p-8 mt-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/nextjs.jpg"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      NextJS
-                    </p>
-                  </div>
+                  <Link
+                    href={{
+                      pathname: "/landing",
+                      query: { keyword: "/img/colombia1.jpg" },
+                    }}
+                  >
+                    <div className="shadow-lg rounded-lg text-center p-8 bg-colombia bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                      <p className="text-lg text-white mt-4 font-bold h-16"></p>
+                    </div>
+                  </Link>
+                  <Link
+                    href={{
+                      pathname: "/landing",
+                      query: { keyword: "/img/venezuela.jpg" },
+                    }}
+                  >
+                    <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-venezuela bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                      <p className="text-lg text-white mt-4 font-bold h-16">
+                        <br></br>
+                        <br></br>
+                      </p>
+                    </div>
+                  </Link>
+                  <Link
+                    href={{
+                      pathname: "/landing",
+                      query: { keyword: "/img/ecuador.png" },
+                    }}
+                  >
+                    <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-ecuador bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                      <p className="text-lg text-white mt-4 font-bold h-16">
+                        <br></br>
+                        <br></br>
+                      </p>
+                    </div>
+                  </Link>
                 </div>
                 <div className="my-4 w-full lg:w-6/12 px-4 lg:mt-16">
-                  <div className="bg-yellow-500 shadow-lg rounded-lg text-center p-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/js.png"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      JavaScript
-                    </p>
-                  </div>
-
-                  <div className="bg-red-700 shadow-lg rounded-lg text-center p-8 mt-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/angular.jpg"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      Angular
-                    </p>
-                  </div>
-
-                  <div className="bg-emerald-500 shadow-lg rounded-lg text-center p-8 mt-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/vue.jpg"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      Vue.js
-                    </p>
-                  </div>
+                  <Link
+                    href={{
+                      pathname: "/landing",
+                      query: { keyword: "/img/peru.jpg" },
+                    }}
+                  >
+                    <div className="shadow-lg rounded-lg text-center p-8 bg-peru bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                      <p className="text-xs text-white mt-4 font-bold h-16">
+                        <br></br>
+                        <br></br>
+                      </p>
+                    </div>
+                  </Link>
+                  <Link
+                    href={{
+                      pathname: "/landing",
+                      query: { keyword: "/img/bolivia.jpg" },
+                    }}
+                  >
+                    <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-bolivia bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                      <p className="text-lg text-white mt-4 font-bold h-16">
+                        <br></br>
+                        <br></br>
+                      </p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -340,7 +372,7 @@ export default function Index() {
                 <i className="fas fa-drafting-compass text-xl"></i>
               </div>
               <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                Javascript Components
+                Cono Norte
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                 In order to create a great User Experience some components
@@ -454,7 +486,7 @@ export default function Index() {
                   transform:
                     "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
                 }}
-                src="/img/documentation.png"
+                src="https://images.unsplash.com/photo-1437603568260-1950d3ca6eab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
               />
             </div>
           </div>
@@ -462,11 +494,9 @@ export default function Index() {
 
         <div className="justify-center text-center flex flex-wrap mt-24">
           <div className="w-full md:w-6/12 px-12 md:px-4">
-            <h2 className="font-semibold text-4xl">Beautiful Example Pages</h2>
+            <h2 className="font-semibold text-4xl">PROCESO GANAR</h2>
             <p className="text-lg leading-relaxed mt-4 mb-4 text-blueGray-500">
-              Notus NextJS is a completly new product built using our past
-              experience in web templates. Take the examples we made for you and
-              start playing with them.
+              El objetivo de alcanzar más amigos es la multiplicación celular.
             </p>
           </div>
         </div>
@@ -478,45 +508,45 @@ export default function Index() {
             <div className="w-full lg:w-12/12 px-4  -mt-24">
               <div className="flex flex-wrap">
                 <div className="w-full lg:w-4/12 px-4">
-                  <h5 className="text-xl font-semibold pb-4 text-center">
+                  {/* <h5 className="text-xl font-semibold pb-4 text-center">
                     Login Page
-                  </h5>
+                  </h5> */}
                   {/* <Link href="/auth/login"> */}
                   <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                     <img
                       alt="..."
                       className="align-middle border-none max-w-full h-auto rounded-lg"
-                      src="/img/login.jpg"
+                      src={images[current]}
                     />
                   </div>
                   {/* </Link> */}
                 </div>
 
                 <div className="w-full lg:w-4/12 px-4">
-                  <h5 className="text-xl font-semibold pb-4 text-center">
+                  {/* <h5 className="text-xl font-semibold pb-4 text-center">
                     Profile Page
-                  </h5>
+                  </h5> */}
                   {/* <Link href="/profile"> */}
                   <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                     <img
                       alt="..."
                       className="align-middle border-none max-w-full h-auto rounded-lg"
-                      src="/img/profile.jpg"
+                      src={images[current2]}
                     />
                   </div>
                   {/* </Link> */}
                 </div>
 
                 <div className="w-full lg:w-4/12 px-4">
-                  <h5 className="text-xl font-semibold pb-4 text-center">
+                  {/* <h5 className="text-xl font-semibold pb-4 text-center">
                     Landing Page
-                  </h5>
+                  </h5> */}
                   {/* <Link href="/landing"> */}
                   <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                     <img
                       alt="..."
                       className="align-middle border-none max-w-full h-auto rounded-lg"
-                      src="/img/landing.jpg"
+                      src={images[current3]}
                     />
                   </div>
                   {/* </Link> */}
@@ -527,32 +557,46 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-20 bg-blueGray-600 overflow-hidden">
+      <section className="py-10 bg-blueGray-600 overflow-hidden">
         <div className="container mx-auto pb-64">
           <div className="flex flex-wrap justify-center">
             <div className="w-full md:w-5/12 px-12 md:px-4 ml-auto mr-auto md:mt-64">
               <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                <i className="fas fa-code-branch text-xl"></i>
+                <i className="fas fa-eye text-xl"></i>
               </div>
               <h3 className="text-3xl mb-2 font-semibold leading-normal text-white">
-                Open Source
+                VISIÓN
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-400">
-                Since Tailwind CSS is an open source project we wanted to
-                continue this movement too. You can give this version a try to
-                feel the design and also test the quality of the code!
+                Ser una Iglesia pentecostal, sana y con propósito de Excelencia
+                Misionológica, Personal, Administrativa y de Espacios de
+                Reunión, para glorificar a nuestro gran Dios y Salvador,
+                Jesucristo.
               </p>
-              <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-400">
-                Get it free on Github and please help us spread the news with a
-                Star!
-              </p>
-              <button className="github-star mt-4 inline-block text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg">
-                Github Star
-              </button>
             </div>
-
-            <div className="w-full md:w-4/12 px-4 mr-auto ml-auto mt-32 relative">
-              <i className="fab fa-github text-blueGray-700 absolute text-55 -top-150-px -right-100 left-auto opacity-80"></i>
+            <div className="w-full md:w-5/12 px-12 md:px-4 ml-auto mr-auto md:mt-64">
+              <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
+                <i className="fas fa-bullseye text-xl"></i>
+              </div>
+              <h3 className="text-3xl mb-2 font-semibold leading-normal text-white">
+                MISIÓN
+              </h3>
+              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-400">
+                Conducir personas a Jesucristo para bautizarlas en su nombre,
+                que reciban el Espíritu Santo y se conviertan en miembros de su
+                familia, procurando su desarrollo a fin de que alcancen la
+                madurez que los haga parecerse a Cristo y luego sean equipados
+                para su ministerio en la iglesia y para la misión de su vida en
+                el mundo, de tal manera que glorifiquen el nombre de nuestro
+                Señor Jesucristo con Excelencia.
+              </p>
+            </div>
+            <div className="w-auto md:w-4/12 px-4 mr-auto ml-auto mt-32">
+              <img
+                alt="..."
+                className="w-3/4 h-auto bg-center bg-cover"
+                src="/img/logo2019.png"
+              />
             </div>
           </div>
         </div>
@@ -584,25 +628,24 @@ export default function Index() {
             <div className="w-full text-center lg:w-8/12">
               <p className="text-4xl text-center">
                 <span role="img" aria-label="love">
-                  😍
+                  🙏
                 </span>
               </p>
-              <h3 className="font-semibold text-3xl">
-                Do you love this Starter Kit?
-              </h3>
+              <h3 className="font-semibold text-3xl">Paz de Cristo Amigo</h3>
               <p className="text-blueGray-500 text-lg leading-relaxed mt-4 mb-4">
-                Cause if you do, it can be yours now. Hit the buttons below to
-                navigate to get the Free version for your next project. Build a
-                new web app or give an old project a new look!
+                Si tienes alguna pregunta o comentario, te invitamos a
+                selecionar tu pais para ponerte en contacto con el respectivo
+                lider nacional.
+                <br></br>
+                Dios te bendiga, IAFCJ Cono Norte
               </p>
               <div className="sm:block flex flex-col mt-10">
-                <button className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
-                  Get started
-                </button>
-                <button className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg">
-                  <i className="fab fa-github text-lg mr-1"></i>
-                  <span>Help With a Star</span>
-                </button>
+                <a
+                  href="#country"
+                  className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                >
+                  Selecionar Pais
+                </a>
               </div>
               <div className="text-center mt-16"></div>
             </div>

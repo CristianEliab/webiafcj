@@ -3,6 +3,7 @@ import Link from "next/link";
 // components
 
 /* import IndexDropdown from "components/Dropdowns/IndexDropdown.js"; */
+/* import PagesDropdown from "components/Dropdowns/PagesDropdown.js"; */
 
 export default function Navbar(props) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -16,8 +17,8 @@ export default function Navbar(props) {
               <span className="w-12 h-12 text-sm hidden lg:inline-block items-center justify-center rounded-full">
                 <img
                   alt="..."
-                  src="/img/iafcj.gif"
-                  className="w-full rounded-full align-middle border-none shadow-lg"
+                  src="/img/logo-iafcj-01.png"
+                  className="w-full rounded-full align-middle border-none"
                 />
               </span>
             </Link>
@@ -37,14 +38,53 @@ export default function Navbar(props) {
             id="example-navbar-warning"
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              {/* <li className="flex items-center">
-                <IndexDropdown />
-              </li> */}
+              <li className="flex items-center">
+                <Link href="/home/news">
+                  <div
+                    className="bg-blueGray-700 text-white active:bg-blueGray-900 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                    type="button"
+                  >
+                    Noticias
+                  </div>
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <Link href="/home/events">
+                  <button
+                    className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                    type="button"
+                  >
+                    Eventos
+                  </button>
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <Link href="/home/history">
+                  <button
+                    className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                    type="button"
+                  >
+                    Historia
+                  </button>
+                </Link>
+              </li>
+              <li className="flex items-center">
+                <Link href="/home/convention">
+                  <button
+                    className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                    type="button"
+                  >
+                    Convención
+                  </button>
+                </Link>
+              </li>
+            </ul>
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="flex items-center">
                 <Link href="/auth/login">
                   <a
                     href="#login"
-                    className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                    className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                   >
                     Inicio de sesión
                   </a>
