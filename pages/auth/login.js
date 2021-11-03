@@ -1,11 +1,89 @@
-import React from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+/* import Link from "next/link"; */
+import Router from "next/router";
 
 // layout for page
 
 import Auth from "layouts/Auth.js";
+import { loginEmail, onChangeAuth } from "firebase/client";
+import { validationFields } from "utils/helpers";
 
 export default function Login() {
+  const [email, setEmail] = useState(null);
+  const [emailAlert, setEmailAlert] = useState("");
+  const [password, setPassword] = useState(null);
+  const [passAlert, setPassAlert] = useState("");
+  const [user, setUser] = useState(null);
+
+  const signUser = (e) => {
+    e.preventDefault();
+    let validEmail = validationFields({
+      input: email,
+      setChange: setEmailAlert,
+      name: "un correo",
+      type: "email",
+    });
+    let validPass = validationFields({
+      input: password,
+      setChange: setPassAlert,
+      name: "una contraseña",
+      type: "",
+    });
+    if (validEmail && validPass) {
+      loginEmail({ email, password })
+        .then((res) => {
+          setUser(res.user);
+          goToAdmin();
+        })
+        .catch((error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Correo o contraseña inválidos`,
+          });
+        });
+    }
+  };
+
+  const goToAdmin = () => {
+    Router.push({
+      pathname: "/admin/dashboard",
+    });
+  };
+
+  useEffect(() => {
+    if (email) {
+      validationFields({
+        input: email,
+        setChange: setEmailAlert,
+        name: "un correo",
+        type: "email",
+      });
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (password) {
+      validationFields({
+        input: password,
+        setChange: setPassAlert,
+        name: "una contraseña",
+        type: "pass",
+      });
+    }
+  }, [password]);
+
+  useEffect(() => {
+    onChangeAuth(setUser);
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      goToAdmin();
+    }
+  }, [user]);
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -40,7 +118,7 @@ export default function Login() {
                 {/* <div className="text-blueGray-400 text-center mb-3 font-bold">
                   <small>Or sign in with credentials</small>
                 </div> */}
-                <form>
+                <form onSubmit={signUser}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -52,7 +130,16 @@ export default function Login() {
                       type="email"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
+                    {emailAlert !== "" && (
+                      <div
+                        className="my-2 p-2 rounded-md text-center block uppercase text-white text-xs font-bold mb-2 bg-red-400"
+                        htmlFor="grid-password"
+                      >
+                        {emailAlert}
+                      </div>
+                    )}
                   </div>
 
                   <div className="relative w-full mb-3">
@@ -66,9 +153,18 @@ export default function Login() {
                       type="password"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
+                      onChange={(e) => setPassword(e.target.value)}
                     />
+                    {passAlert !== "" && (
+                      <div
+                        className="my-2 p-2 rounded-md text-center block uppercase text-white text-xs font-bold mb-2 bg-red-400"
+                        htmlFor="grid-password"
+                      >
+                        {passAlert}
+                      </div>
+                    )}
                   </div>
-                  <div>
+                  {/* <div>
                     <label className="inline-flex items-center cursor-pointer">
                       <input
                         id="customCheckLogin"
@@ -79,22 +175,21 @@ export default function Login() {
                         Remember me
                       </span>
                     </label>
-                  </div>
+                  </div> */}
 
                   <div className="text-center mt-6">
-                    <Link href="/admin/dashboard">
-                      <button
-                        className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                        type="button"
-                      >
-                        Sign In
-                      </button>
-                    </Link>
+                    <button
+                      className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      type="submit"
+                      onClick={signUser}
+                    >
+                      Sign In
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
-            <div className="flex flex-wrap mt-6 relative">
+            {/* <div className="flex flex-wrap mt-6 relative">
               <div className="w-1/2">
                 <a
                   href="#pablo"
@@ -105,13 +200,13 @@ export default function Login() {
                 </a>
               </div>
               <div className="w-1/2 text-right">
-                <Link href="/auth/register">
-                  <a href="#pablo" className="text-blueGray-200">
-                    <small>Create new account</small>
-                  </a>
-                </Link>
+                <Link href="/auth/register"> 
+                <div className="text-blueGray-200">
+                  <small>Create new account</small>
+                </div>
+               </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

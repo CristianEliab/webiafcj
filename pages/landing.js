@@ -10,16 +10,32 @@ export default function Landing() {
 
   useEffect(() => {
     if (!router.query.keyword) {
-      Router.push({
-        pathname: "/",
-      });
+      goToHome();
     }
     return () => {};
   }, [router]);
 
+  const goToHome = () => {
+    Router.push({
+      pathname: "/",
+    });
+  };
+
   return (
     <>
       <main>
+        <div className="relative z-2">
+          <div className="absolute p-4">
+            <div
+              className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase p-4 shadow-sm rounded-md cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+              onClick={() => {
+                goToHome();
+              }}
+            >
+              Regresar
+            </div>
+          </div>
+        </div>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
@@ -29,6 +45,7 @@ export default function Landing() {
           >
             <span id="blackOverlay" className="w-full h-full absolute"></span>
           </div>
+
           {/* <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
@@ -51,7 +68,6 @@ export default function Landing() {
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
               version="1.1"
               viewBox="0 0 2560 100"

@@ -47,12 +47,6 @@ export default function Index() {
       } else {
         setCurrent3(current3 + 1);
       }
-    } else {
-      if (current === 0) {
-        setCurrent(images.length - 1);
-      } else {
-        setCurrent(current - 1);
-      }
     }
   };
 
@@ -89,7 +83,7 @@ export default function Index() {
               </p>
             </div>
           </div>
-          <div className="w-full md:w-5/12 px-4 mr-auto ml-auto mt-32">
+          <div className="lg:w-5/12 md:w-5/12 sm:hidden xl:w-5/12 block px-4 mr-auto ml-auto mt-32">
             <div className="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0">
               <img
                 alt="..."
@@ -171,11 +165,12 @@ export default function Index() {
                         <i className="far fa-calendar-alt"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
-                        CSS Components
+                        Hechos 13:47
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-                        Notus NextJS comes with a huge number of Fully Coded CSS
-                        components.
+                        Porque así nos ha mandado el Señor, diciendo: Te he
+                        puesto para luz de los gentiles, A fin de que seas para
+                        salvación hasta lo último de la tierra.
                       </p>
                     </div>
                   </div>
@@ -185,11 +180,11 @@ export default function Index() {
                         <i className="fas fa-drafting-compass"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
-                        JavaScript Components
+                        Marcos 16:15
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-                        We also feature many dynamic components for React,
-                        NextJS, Vue and Angular.
+                        Y les dijo: Id por todo el mundo y predicad el evangelio
+                        a toda criatura.
                       </p>
                     </div>
                   </div>
@@ -200,10 +195,13 @@ export default function Index() {
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
                         <i className="fas fa-newspaper"></i>
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">Pages</h6>
+                      <h6 className="text-xl mb-1 font-semibold">
+                        Romanos 1:16
+                      </h6>
                       <p className="mb-4 text-blueGray-500">
-                        This extension also comes with 3 sample pages. They are
-                        fully coded so you can start working instantly.
+                        Porque no me avergüenzo del evangelio, porque es poder
+                        de Dios para salvación a todo aquel que cree; al judío
+                        primeramente, y también al griego.
                       </p>
                     </div>
                   </div>
@@ -212,12 +210,10 @@ export default function Index() {
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
                         <i className="fas fa-file-alt"></i>
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                        Documentation
-                      </h6>
+                      <h6 className="text-xl mb-1 font-semibold">Mateo 5:14</h6>
                       <p className="mb-4 text-blueGray-500">
-                        Built by developers for developers. You will love how
-                        easy is to to work with Notus NextJS.
+                        Vosotros sois la luz del mundo; una ciudad asentada
+                        sobre un monte no se puede esconder.
                       </p>
                     </div>
                   </div>
@@ -234,7 +230,7 @@ export default function Index() {
                 <i className="far fa-calendar-alt"></i>
               </div>
               <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                Eventos año 2021
+                Objetivo
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                 Every element that you need in a product comes built in as a
@@ -243,28 +239,31 @@ export default function Index() {
               </p>
               <div className="block pb-6">
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
-                  Buttons
+                  Amor
                 </span>
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
-                  Inputs
+                  Gozo
                 </span>
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
-                  Labels
+                  Paz
                 </span>
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
-                  Menus
+                  Paciencia
                 </span>
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
-                  Navbars
+                  Benignidad
                 </span>
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
-                  Pagination
+                  Bondad
                 </span>
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
-                  Progressbars
+                  Fe
                 </span>
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
-                  Typography
+                  Mansedumbre
+                </span>
+                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white last:mr-0 mr-2 mt-2">
+                  Templanza
                 </span>
               </div>
             </div>

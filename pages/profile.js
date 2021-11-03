@@ -1,4 +1,5 @@
 import React from "react";
+import Router from "next/router";
 
 /* import Navbar from "components/Navbars/AuthNavbar.js"; */
 /* import Footer from "components/Footers/Footer.js"; */
@@ -6,7 +7,19 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
 
+import { getAuth } from "firebase/auth";
+
 export default function Profile() {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  console.log(user)
+
+  if (user === null) {
+    Router.push({
+      pathname: "/auth/login",
+    });
+  }
   return (
     <>
       {/* <Navbar transparent /> */}
@@ -56,8 +69,12 @@ export default function Profile() {
                       <div className="relative">
                         <img
                           alt="..."
-                          src="/img/team-2-800x800.jpg"
-                          className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                          src={
+                            user.photoURL
+                              ? user.photoURL
+                              : "/img/userprofile.png"
+                          }
+                          className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px bg-gray-300"
                         />
                       </div>
                     </div>

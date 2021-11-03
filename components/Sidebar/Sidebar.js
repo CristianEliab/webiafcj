@@ -161,7 +161,7 @@ export default function Sidebar() {
                 </Link>
               </li>
 
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link href="/admin/maps">
                   <a
                     href="#pablo"
@@ -183,7 +183,7 @@ export default function Sidebar() {
                     Maps
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
 
             {/* Divider */}

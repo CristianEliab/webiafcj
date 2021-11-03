@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { createPopper } from "@popperjs/core";
+import { signOutMethod } from "firebase/client";
+import Router from "next/router";
 
 const UserDropdown = () => {
   // dropdown props
@@ -16,6 +18,18 @@ const UserDropdown = () => {
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
+
+  const singOut = () => {
+    signOutMethod();
+    goToLogin();
+  };
+
+  const goToLogin = () => {
+    Router.push({
+      pathname: "/auth/login",
+    });
+  };
+
   return (
     <>
       <a
@@ -67,14 +81,12 @@ const UserDropdown = () => {
           Something else here
         </a>
         <div className="h-0 my-2 border border-solid border-blueGray-100" />
-        <Link href="/">
-          <a
-            href="#iafcj"
-            className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          >
-            Logout
-          </a>
-        </Link>
+        <div
+          className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 cursor-pointer"
+          onClick={singOut}
+        >
+          Logout
+        </div>
       </div>
     </>
   );
