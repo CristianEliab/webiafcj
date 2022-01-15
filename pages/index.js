@@ -5,11 +5,14 @@ import Link from "next/link";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
+import { onChangeAuth } from "firebase/client";
+
 export default function Index() {
   const [current, setCurrent] = useState(0);
   const [current2, setCurrent2] = useState(1);
   const [current3, setCurrent3] = useState(2);
   const [counter, setCounter] = useState(0);
+  const [user, setUser] = useState(null);
   const images = [
     "/celulas/1.png",
     "/celulas/2.png",
@@ -51,6 +54,10 @@ export default function Index() {
   };
 
   useEffect(() => {
+    onChangeAuth(setUser);
+  }, []);
+
+  useEffect(() => {
     if (counter === images.length) {
       changeCurrent("add");
       setCounter(0);
@@ -63,7 +70,7 @@ export default function Index() {
 
   return (
     <>
-      <IndexNavbar fixed />
+      <IndexNavbar fixed user={user} />
       <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
         <div className="container mx-auto items-center flex flex-wrap">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">

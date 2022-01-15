@@ -10,15 +10,15 @@ export default function FooterAdmin() {
             <div className="w-full md:w-4/12 px-4">
               <div className="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{" "}
-                <a
+                {/*  <a
                   href="#iafcj"
                   className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
                 >
                   Creative Tim
-                </a>
+                </a> */}
               </div>
             </div>
-            <div className="w-full md:w-8/12 px-4">
+            {/* <div className="w-full md:w-8/12 px-4">
               <ul className="flex flex-wrap list-none md:justify-end  justify-center">
                 <li>
                   <a
@@ -53,7 +53,7 @@ export default function FooterAdmin() {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </footer>

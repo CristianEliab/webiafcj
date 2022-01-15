@@ -5,7 +5,13 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCEmjb_jGVpVKbK7Jf6HDF0HWBGyGeVWwc",
@@ -32,11 +38,15 @@ export const onChangeAuth = (onChange) => {
   });
 };
 
-export async function getDataUser() {
-  const citiesCol = collection(db, "cities");
-  const citySnapshot = await getDocs(citiesCol);
-  const cityList = citySnapshot.docs.map((doc) => doc.data());
-  return cityList;
+export async function getDataUser({ email }) {
+  const q = query(collection(db, "users"), where("email", "==", email));
+  const querySnapshot = await getDocs(q);
+  let userData = null;
+  querySnapshot.forEach((doc) => {
+    console.log(doc.data());
+    userData = doc.data();
+  });
+  return userData;
 }
 
 export const signOutMethod = () => {

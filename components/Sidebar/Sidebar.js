@@ -84,7 +84,7 @@ export default function Sidebar() {
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Layout Pages
+              Menú
             </h6>
             {/* Navigation */}
 
@@ -108,7 +108,7 @@ export default function Sidebar() {
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    Dashboard
+                    Estadisticas
                   </a>
                 </Link>
               </li>
@@ -132,7 +132,7 @@ export default function Sidebar() {
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    Settings
+                    Configuraciones
                   </a>
                 </Link>
               </li>
@@ -156,7 +156,7 @@ export default function Sidebar() {
                           : "text-blueGray-300")
                       }
                     ></i>{" "}
-                    Tables
+                    Celulas
                   </a>
                 </Link>
               </li>

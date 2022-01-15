@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { createPopper } from "@popperjs/core";
 import { signOutMethod } from "firebase/client";
 import Router from "next/router";
 
+import { getAuth } from "firebase/auth";
+
 const UserDropdown = () => {
+  const auth = getAuth();
+  const user = auth.currentUser;
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -18,6 +22,15 @@ const UserDropdown = () => {
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
+
+  useEffect(() => {
+    if (user === null) {
+      Router.push({
+        pathname: "/auth/login",
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const singOut = () => {
     signOutMethod();
@@ -45,8 +58,10 @@ const UserDropdown = () => {
           <span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
             <img
               alt="..."
+              src={
+                user && user.photoURL ? user.photoURL : "/img/userprofile.png"
+              }
               className="w-full rounded-full align-middle border-none shadow-lg"
-              src="/img/team-1-800x800.jpg"
             />
           </span>
         </div>
@@ -63,10 +78,10 @@ const UserDropdown = () => {
             href="#iafcj"
             className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           >
-            Action
+            Perfil
           </a>
         </Link>
-        <a
+        {/* <a
           href="#iafcj"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           onClick={(e) => e.preventDefault()}
@@ -79,13 +94,13 @@ const UserDropdown = () => {
           onClick={(e) => e.preventDefault()}
         >
           Something else here
-        </a>
+        </a> */}
         <div className="h-0 my-2 border border-solid border-blueGray-100" />
         <div
           className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 cursor-pointer"
           onClick={singOut}
         >
-          Logout
+          Cerrar Sesión
         </div>
       </div>
     </>

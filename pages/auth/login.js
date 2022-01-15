@@ -84,9 +84,27 @@ export default function Login() {
     }
   }, [user]);
 
+  const goToHome = () => {
+    Router.push({
+      pathname: "/",
+    });
+  };
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
+        <div className="flex content-center items-center justify-start">
+          <div className="p-4">
+            <div
+              className="text-black bg-white text-xs font-bold uppercase p-4 shadow-sm rounded-md cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+              onClick={() => {
+                goToHome();
+              }}
+            >
+              Regresar
+            </div>
+          </div>
+        </div>
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-4/12 px-4">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
@@ -114,6 +132,7 @@ export default function Login() {
                 </div>
                 <hr className="mt-6 border-b-1 border-blueGray-300" />
               </div> */}
+
               <div className="flex-auto px-4 lg:px-10 py-10 pt-4">
                 {/* <div className="text-blueGray-400 text-center mb-3 font-bold">
                   <small>Or sign in with credentials</small>
