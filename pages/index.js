@@ -84,9 +84,7 @@ export default function Index() {
                 IGLESIA APOSTOLICA DE LA FE EN CRISTO JESUS
               </h2>
               <p className="text-center mt-4 text-lg leading-relaxed text-blueGray-500">
-                Notus NextJS is Free and Open Source. It does not change any of
-                the CSS from . It features multiple HTML elements and it comes
-                with dynamic components for ReactJS, Vue and Angular.
+                MISION - TEXTO
               </p>
             </div>
           </div>
@@ -308,67 +306,67 @@ export default function Index() {
                   <Link
                     href={{
                       pathname: "/landing",
-                      query: { keyword: "/img/colombia1.jpg" },
+                      query: { keyword: "Colombia" },
                     }}
                   >
                     <div className="shadow-lg rounded-lg text-center p-8 bg-colombia bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                       <p className="text-lg text-white mt-4 font-bold h-16"></p>
                     </div>
                   </Link>
-                  <Link
-                    href={{
+                  {/* <Link
+                  href={{
                       pathname: "/landing",
                       query: { keyword: "/img/venezuela.jpg" },
                     }}
-                  >
-                    <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-venezuela bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                      <p className="text-lg text-white mt-4 font-bold h-16">
-                        <br></br>
-                        <br></br>
-                      </p>
-                    </div>
-                  </Link>
-                  <Link
-                    href={{
+                  > */}
+                  <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-venezuela bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                    <p className="text-lg text-white mt-4 font-bold h-16">
+                      <br></br>
+                      <br></br>
+                    </p>
+                  </div>
+                  {/* </Link> */}
+                  {/* <Link
+                   href={{
                       pathname: "/landing",
                       query: { keyword: "/img/ecuador.png" },
                     }}
-                  >
-                    <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-ecuador bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                      <p className="text-lg text-white mt-4 font-bold h-16">
-                        <br></br>
-                        <br></br>
-                      </p>
-                    </div>
-                  </Link>
+                  > */}
+                  <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-ecuador bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                    <p className="text-lg text-white mt-4 font-bold h-16">
+                      <br></br>
+                      <br></br>
+                    </p>
+                  </div>
+                  {/* </Link> */}
                 </div>
                 <div className="my-4 w-full lg:w-6/12 px-4 lg:mt-16">
-                  <Link
-                    href={{
+                  {/* <Link
+                  href={{
                       pathname: "/landing",
                       query: { keyword: "/img/peru.jpg" },
                     }}
-                  >
-                    <div className="shadow-lg rounded-lg text-center p-8 bg-peru bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                      <p className="text-xs text-white mt-4 font-bold h-16">
-                        <br></br>
-                        <br></br>
-                      </p>
-                    </div>
-                  </Link>
-                  <Link
+                  > */}
+                  <div className="shadow-lg rounded-lg text-center p-8 bg-peru bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                    <p className="text-xs text-white mt-4 font-bold h-16">
+                      <br></br>
+                      <br></br>
+                    </p>
+                  </div>
+                  {/* </Link> */}
+                  {/* <Link
                     href={{
                       pathname: "/landing",
                       query: { keyword: "/img/bolivia.jpg" },
                     }}
-                  >
-                    <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-bolivia bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
-                      <p className="text-lg text-white mt-4 font-bold h-16">
-                        <br></br>
-                        <br></br>
-                      </p>
-                    </div>
-                  </Link>
+                  > */}
+                  <div className="shadow-lg rounded-lg text-center p-8 mt-8 bg-bolivia bg-full bg-center bg-no-repeat cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+                    <p className="text-lg text-white mt-4 font-bold h-16">
+                      <br></br>
+                      <br></br>
+                    </p>
+                  </div>
+                  {/*  </Link> */}
                 </div>
               </div>
             </div>

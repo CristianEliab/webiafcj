@@ -96,7 +96,7 @@ export default function Navbar({ user }) {
                 </Link>
               </li>
             </ul> */}
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+            {/* <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="flex items-center">
                 {user ? (
                   <div
@@ -126,7 +126,7 @@ export default function Navbar({ user }) {
                   </Link>
                 )}
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </nav>
